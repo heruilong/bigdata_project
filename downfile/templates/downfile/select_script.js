@@ -3,7 +3,8 @@
  * <script src="http://code.jquery.com/jquery-1.9.1.js">
  */
 
-	alert("aaa");
+function select_change(){
+
 $('#clade').change(function(){
     var selectedValue = $("#clade option:selected").text();
     if(selectedValue == "Mammal"){
@@ -116,4 +117,4 @@ $('#clade').change(function(){
 
 });
 
-
+}

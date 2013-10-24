@@ -4,11 +4,11 @@
     <meta charset="utf-8">
 <title>genome_web</title>
      <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-     <script src="../script/select_script.js" >
+    <script type ="text/javascript" src="select_script.js" > 
         
      </script>
      <script>
-         select_change();
+        <!-- select_change();-->
      </script>
 </head>
 
@@ -25,7 +25,7 @@
 			<OPTION VALUE="vertebrate">Vertebrate</OPTION>
 			<OPTION VALUE="deuterostome">Deuterostome</OPTION>
 			<OPTION VALUE="insect">Insect</OPTION>
-			<OPTION VALUE="worm">Nematode</OPTION>
+			<OPTION VALUE="worm">Worm</OPTION>
 			<OPTION VALUE="other">Other</OPTION>
 		</select>
 	</td>
@@ -101,9 +101,8 @@
 
 </form>
 	</div>
-	<!--  
 <script>
-	alert("aaa");
+	
 $('#clade').change(function(){
     var selectedValue = $("#clade option:selected").text();
     if(selectedValue == "Mammal"){
@@ -216,6 +215,6 @@ $('#clade').change(function(){
 
 });
 </script>
--->
+
 </body>
 </html>
