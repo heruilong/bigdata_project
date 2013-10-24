@@ -1,108 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-<title>genome_web</title>
-     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-     <script src="../script/select_script.js" >
-        
-     </script>
-     <script>
-         select_change();
-     </script>
-</head>
+/**
+ * Created by heruilong on 13-10-24.
+ * <script src="http://code.jquery.com/jquery-1.9.1.js">
+ */
 
-<body>
-
-	<div>
-	
-	<form action="downloadfile"  method="post">{% csrf_token %}
-		<table width="200" border="1">
-  <tr>
-    <td><label>Clade:</label></td>
-    <td><select id='clade' name="clade"> 
-			<OPTION SELECTED VALUE="mammal">Mammal</OPTION>
-			<OPTION VALUE="vertebrate">Vertebrate</OPTION>
-			<OPTION VALUE="deuterostome">Deuterostome</OPTION>
-			<OPTION VALUE="insect">Insect</OPTION>
-			<OPTION VALUE="worm">Nematode</OPTION>
-			<OPTION VALUE="other">Other</OPTION>
-		</select>
-	</td>
-  </tr>
-  <tr>
-    <td><label>Genome:</label></td>
-    <td>
-		<select id='genome' name='genome'>
-			<OPTION SELECTED VALUE="Human">Human</OPTION>
-			<OPTION VALUE="Chimp">Chimp</OPTION>
-			<OPTION VALUE="Gorilla">Gorilla</OPTION>
-			<OPTION VALUE="Orangutan">Orangutan</OPTION>
-			<OPTION VALUE="Gibbon">Gibbon</OPTION>
-			<OPTION VALUE="Rhesus">Rhesus</OPTION>
-			<OPTION VALUE="Baboon">Baboon</OPTION>
-			<OPTION VALUE="Squirrel monkey">Squirrel monkey</OPTION>
-			<OPTION VALUE="Marmoset">Marmoset</OPTION>
-			<OPTION VALUE="Tarsier">Tarsier</OPTION>
-			<OPTION VALUE="Mouse lemur">Mouse lemur</OPTION>
-			<OPTION VALUE="Bushbaby">Bushbaby</OPTION>
-			<OPTION VALUE="Tree shrew">Tree shrew</OPTION>
-			<OPTION VALUE="Mouse">Mouse</OPTION>
-			<OPTION VALUE="Rat">Rat</OPTION>
-			<OPTION VALUE="Kangaroo rat">Kangaroo rat</OPTION>
-			<OPTION VALUE="Naked mole-rat">Naked mole-rat</OPTION>
-			<OPTION VALUE="Guinea pig">Guinea pig</OPTION>
-			<OPTION VALUE="Rabbit">Rabbit</OPTION>
-			<OPTION VALUE="Squirrel">Squirrel</OPTION>
-			<OPTION VALUE="Pika">Pika</OPTION>
-			<OPTION VALUE="Pig">Pig</OPTION>
-			<OPTION VALUE="Alpaca">Alpaca</OPTION>
-			<OPTION VALUE="Dolphin">Dolphin</OPTION>
-			<OPTION VALUE="Sheep">Sheep</OPTION>
-			<OPTION VALUE="Cow">Cow</OPTION>
-			<OPTION VALUE="Horse">Horse</OPTION>
-			<OPTION VALUE="White rhinoceros">White rhinoceros</OPTION>
-			<OPTION VALUE="Cat">Cat</OPTION>
-			<OPTION VALUE="Ferret ">Ferret </OPTION>
-			<OPTION VALUE="Dog">Dog</OPTION>
-			<OPTION VALUE="Panda">Panda</OPTION>
-			<OPTION VALUE="Microbat">Microbat</OPTION>
-			<OPTION VALUE="Megabat">Megabat</OPTION>
-			<OPTION VALUE="Hedgehog">Hedgehog</OPTION>
-			<OPTION VALUE="Shrew">Shrew</OPTION>
-			<OPTION VALUE="Elephant">Elephant</OPTION>
-			<OPTION VALUE="Rock hyrax">Rock hyrax</OPTION>
-			<OPTION VALUE="Tenrec">Tenrec</OPTION>
-			<OPTION VALUE="Manatee">Manatee</OPTION>
-			<OPTION VALUE="Armadillo">Armadillo</OPTION>
-			<OPTION VALUE="Sloth">Sloth</OPTION>
-			<OPTION VALUE="Opossum">Opossum</OPTION>
-			<OPTION VALUE="Tasmanian devil">Tasmanian devil</OPTION>
-			<OPTION VALUE="Wallaby">Wallaby</OPTION>
-			<OPTION VALUE="Platypus">Platypus</OPTION>
-		</select>
-	</td>
-  </tr>
-  <tr>
-    <td><label>Sequence Type</label></td>
-    <td>
-		<select id="seqType" name = "seqType">
-			<OPTION SELECTED VALUE="genomic">DNA</OPTION>
-			<OPTION VALUE="mRNA">mRNA</OPTION>
-			<OPTION VALUE="protein">protein</OPTION>
-		</select>
-	</td>
-  </tr>
-  <tr>
-    <td><input type="submit" value="submit"></td>
-    <td>&nbsp;</td>
-  </tr>
-</table>
-
-</form>
-	</div>
-	<!--  
-<script>
 	alert("aaa");
 $('#clade').change(function(){
     var selectedValue = $("#clade option:selected").text();
@@ -215,7 +115,5 @@ $('#clade').change(function(){
     }
 
 });
-</script>
--->
-</body>
-</html>
+
+

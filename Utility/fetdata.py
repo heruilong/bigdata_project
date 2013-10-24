@@ -7,7 +7,7 @@ import urllib
 import urllib2
 import webbrowser
 import mechanize
-
+import os.path
 
 def fetch_data_from_ucsc(clade ="mammal", genome="Human", seqType ="genomic"):
     url = "http://genome.ucsc.edu/cgi-bin/hgTables?command=start"
@@ -86,7 +86,7 @@ def fetch_data_from_ucsc(clade ="mammal", genome="Human", seqType ="genomic"):
         br.form = form2
         response = br.submit(name='hgta_doGenomicDna')
         content= response.read()
-        with open(genome+"-"+seqType+".txt", "w") as f:
+        with open(os.path.join(os.path.dirname(__file__),"../sequence/"+genome+"-"+seqType+".txt"), "w") as f:
             f.write(content)    
 
     
@@ -105,7 +105,7 @@ def add_select_to_form(form, name, attrs, options):
     
     
 if __name__ == "__main__":
-   fetch_data_from_ucsc(genome="Chimp", seqType="protein")
+   fetch_data_from_ucsc(genome="Rat", seqType="genomic")
     
     
     
