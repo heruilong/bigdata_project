@@ -17,9 +17,9 @@ def download(request):
     #print clade + genome + seqType
     print cladeVal+"---"+genomeVal+"---"+seqTypeVal
     #fetdata.fetch_data_from_ucsc(clade = cladeVal, genome = genomeVal, seqType = seqTypeVal)
-    #fastaStr = readfile.readLocal('../statistic/fasta_test.txt')
-    #print count.decodeFasta(fastaStr)
-    return HttpResponse("hellworld----")
+    fastaStr = readfile.readLocal('../statistic/fasta_test.txt')
+    print count.fastaCount(fastaStr)
+    return render(request, 'downfile/d3.html', {'arr' : count.fastaCount(fastaStr)})
 
 def d3(request):
     return render(request,'downfile/d3.html')
