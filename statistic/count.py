@@ -20,4 +20,3 @@ def test():
 	fastaStr = sys.stdin.read()
 	print fastaCount(fastaStr)	
 	
-test()
