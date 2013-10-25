@@ -2,10 +2,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from utility import fetdata
+from statistic import count
 
 def index(request):
     print '999'
-    return render(request, 'downfile/index.html');
+    return render(request, 'downfile/index.html')
 
 
 def download(request):
@@ -14,5 +15,9 @@ def download(request):
     seqTypeVal = request.POST['seqType']
     #print clade + genome + seqType
     print cladeVal+"---"+genomeVal+"---"+seqTypeVal
-    #fetdata.fetch_data_from_ucsc(clade = cladeVal, genome = genomeVal, seqType = seqTypeVal)
-    return HttpResponse("hellworld----")
+    fetdata.fetch_data_from_ucsc(clade = cladeVal, genome = genomeVal, seqType = seqTypeVal)
+    count.
+	return HttpResponse("hellworld----")
+
+def d3(request):
+    return render(request,'downfile/d3.html')
