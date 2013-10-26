@@ -7,7 +7,7 @@
 	<META http-equiv="Content-Script-Type" content="text/javascript">
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<META HTTP-EQUIV="Expires" CONTENT="-1">
-	<TITLE>Select sequence type for UCSC Genes	</TITLE>
+	<TITLE>Select sequence type for Other RefSeq	</TITLE>
     <LINK rel='STYLESHEET' href='/style/HGStyle-v290.css' TYPE='text/css' />
 </HEAD>
 <BODY CLASS="hgTables cgi">
@@ -39,19 +39,19 @@ window.onunload = function(){}; // Trick to avoid FF back button issue.
 
 <li class="first even" id="home"><a href="/index.html" ><span id="home-link">Home</span></a></li> 
 
-<li id="genomes"><a href="/cgi-bin/hgGateway?hgsid=351044855">Genomes</a></li>
-<li id="genomeBrowser"><a href="/cgi-bin/hgTracks?hgsid=351044855">Genome Browser</a></li>
+<li id="genomes"><a href="/cgi-bin/hgGateway?hgsid=351272475">Genomes</a></li>
+<li id="genomeBrowser"><a href="/cgi-bin/hgTracks?hgsid=351272475">Genome Browser</a></li>
 
 <li class="menuparent" id="tools"><span>Tools</span>
 	<ul style="display: none; visibility: hidden;">
-	<li class="first"><a href="../cgi-bin/hgBlat?hgsid=351044855&command=start">Blat</a></li>
-	<li><a href="../cgi-bin/hgTables?hgsid=351044855">Table Browser</a></li>
-	<li><a href="../cgi-bin/hgVai?hgsid=351044855">Variant Annotation Integrator</a></li>
-	<li><a href="../cgi-bin/hgNear?hgsid=351044855">Gene Sorter</a></li>
-	<li><a href="../cgi-bin/hgGenome?hgsid=351044855">Genome Graphs</a></li>
-	<li><a href="../cgi-bin/hgPcr?hgsid=351044855">In-Silico PCR</a></li>
-	<li><a href="../cgi-bin/hgLiftOver?hgsid=351044855">LiftOver</a></li>
-	<li><a href="../cgi-bin/hgVisiGene?hgsid=351044855">VisiGene</a></li>
+	<li class="first"><a href="../cgi-bin/hgBlat?hgsid=351272475&command=start">Blat</a></li>
+	<li><a href="../cgi-bin/hgTables?hgsid=351272475">Table Browser</a></li>
+	<li><a href="../cgi-bin/hgVai?hgsid=351272475">Variant Annotation Integrator</a></li>
+	<li><a href="../cgi-bin/hgNear?hgsid=351272475">Gene Sorter</a></li>
+	<li><a href="../cgi-bin/hgGenome?hgsid=351272475">Genome Graphs</a></li>
+	<li><a href="../cgi-bin/hgPcr?hgsid=351272475">In-Silico PCR</a></li>
+	<li><a href="../cgi-bin/hgLiftOver?hgsid=351272475">LiftOver</a></li>
+	<li><a href="../cgi-bin/hgVisiGene?hgsid=351272475">VisiGene</a></li>
 	<li class="last"><a href="../util.html">Other Utilities</a></li>
 	</ul>
 </li>
@@ -81,9 +81,9 @@ US Server</li>
 </li>
 <li class="menuparent" id="myData"><span>My Data</span>
 	<ul style="display: none; visibility: hidden;">
-	<li><a href="../cgi-bin/hgSession?hgsid=351044855&hgS_doMainPage=1">Sessions</a></li>
-	<li><a href="../cgi-bin/hgHubConnect?hgsid=351044855">Track Hubs</a></li>
-	<li class="last"><a href="../cgi-bin/hgCustom?hgsid=351044855">Custom Tracks</a></li>
+	<li><a href="../cgi-bin/hgSession?hgsid=351272475&hgS_doMainPage=1">Sessions</a></li>
+	<li><a href="../cgi-bin/hgHubConnect?hgsid=351272475">Track Hubs</a></li>
+	<li class="last"><a href="../cgi-bin/hgCustom?hgsid=351272475">Custom Tracks</a></li>
 	</ul>
 </li>
 <li class="menuparent" id="aboutUs"><span>About Us</span>
@@ -135,13 +135,13 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "nice_menus_options": { "delay
       <TABLE WIDTH='100%' BGCOLOR='#888888' BORDER='0' CELLSPACING='0' CELLPADDING='1'><TR><TD>
     <TABLE BGCOLOR='#FFFEE8' WIDTH='100%'  BORDER='0' CELLSPACING='0' CELLPADDING='0'><TR><TD>
      <div class='subheadingBar'><div class='windowSize' id='sectTtl'>
-Select sequence type for UCSC Genes     </div></div>
+Select sequence type for Other RefSeq     </div></div>
      <TABLE BGCOLOR='#FFFEE8' WIDTH='100%' CELLPADDING=0><TR><TH HEIGHT=10></TH></TR>
      <TR><TD WIDTH=10>&nbsp;</TD><TD>
 
 
 <FORM ACTION="/cgi-bin/hgTables" METHOD=GET>
-<INPUT TYPE=HIDDEN NAME='hgsid' VALUE='351044855'>
+<INPUT TYPE=HIDDEN NAME='hgsid' VALUE='351272475'>
 <INPUT TYPE=RADIO NAME="hgta_geneSeqType" VALUE="genomic" CHECKED> genomic<BR>
 <INPUT TYPE=RADIO NAME="hgta_geneSeqType" VALUE="protein" > protein<BR>
 <INPUT TYPE=RADIO NAME="hgta_geneSeqType" VALUE="mRNA" > mRNA<BR>
