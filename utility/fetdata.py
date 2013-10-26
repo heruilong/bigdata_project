@@ -86,7 +86,7 @@ def fetch_data_from_ucsc(clade ="mammal", genome="Human", seqType ="genomic"):
         br.form = form2
         response = br.submit(name='hgta_doGenomicDna')
         content= response.read()
-        with open(genome+"-"+seqType+".txt", "w") as f:
+        with open("./sequence/"+genome+"-"+seqType+".txt", "w") as f:
             f.write(content)    
 
     

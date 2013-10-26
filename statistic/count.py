@@ -1,13 +1,11 @@
 import sys
-import geneFormat
 
 # count the number of A C G T of each dna sequence
 def dnaCount(dna):
         return (dna.count('A'),dna.count('C'),dna.count('G'),dna.count('T'))
 
 # count all A C G T of one fasta file.
-def fastaCount(fastaStr):
-	fastaArr = geneFormat.decodeFasta(fastaStr)
+def fastaCount(fastaArr):
 	countRes = [0,0,0,0]
 	for dna in fastaArr[1::2]:
 		eachCount = dnaCount(dna)
