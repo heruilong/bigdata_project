@@ -7,18 +7,50 @@ import urllib
 import urllib2
 import webbrowser
 import mechanize
-
+import re
 
 def fetch_data_from_ucsc(clade ="mammal", genome="Human", seqType ="genomic"):
-    url = "http://genome.ucsc.edu/cgi-bin/hgTables?command=start"
     br = mechanize.Browser()
     br.set_handle_robots(False) #ignore robots
+    
+    url = "http://genome.ucsc.edu/cgi-bin/hgTables?command=start"
     br.open(url)
+    print "initial:"+br.geturl()
+    br.select_form(name="hiddenForm")
+    hgsid = br['hgsid']
+    print "hgsid:"+ hgsid
+   
+    first_url = "http://genome.ucsc.edu/cgi-bin/hgTables"
+    form0 = mechanize.HTMLForm('http://genome.ucsc.edu/cgi-bin/hgTables', method='Get')
+    form0.new_control('hidden', 'hgsid',{'value':hgsid})
+    form0.new_control('hidden', 'clade',{'value':''})
+    form0.new_control('hidden', 'org',{'value':''})
+    form0.new_control('hidden', 'db',{'value':''})
+    form0.new_control('hidden', 'dbhgta_group',{'value':''})
+    form0.new_control('hidden', 'hgta_track',{'value':''})
+    form0.new_control('hidden', 'hgta_table',{'value':''})
+    form0.new_control('hidden', 'hgta_regionType',{'value':''})
+    form0.new_control('hidden', 'position',{'value':''})    
+    form0.new_control('hidden', 'hgta_outputType',{'value':''})
+    form0.new_control('hidden', 'hgta_outFileName',{'value':''})    
+    form0.fixup()
+    br.form = form0
+    response = br.submit()
+    content= response.read()
+    print response.geturl()
+        
+    url2 ="http://genome.ucsc.edu/cgi-bin/hgTables?hgsid="+hgsid+"&clade="+clade+"&org="+genome.replace(' ', '+')+"&db=0&hgta_group=genes&hgta_track=xenoRefGene&hgta_table=xenoRefGene&hgta_regionType=genome&position=&hgta_outputType=sequence&hgta_outFileName="
+
+    br.open(url2)
     
     br.select_form(name="mainForm")
     br["hgta_outputType"] = ["sequence"]
+    print "org:"
+    print br["org"]
     br["org"] = [genome]
+    
     br["clade"] = [clade]
+    print br["org"]
     response = br.submit(name="hgta_doTopSubmit")
     
     content= response.read()
@@ -28,7 +60,7 @@ def fetch_data_from_ucsc(clade ="mammal", genome="Human", seqType ="genomic"):
     
     
     form1 = mechanize.HTMLForm('http://genome.ucsc.edu/cgi-bin/hgTables', method='Get')
-    form1.new_control('hidden', 'hgsid',{'value':'349632407'})
+    form1.new_control('hidden', 'hgsid',{'value':hgsid})
     form1.new_control('radio', 'hgta_geneSeqType',{'value':'genomic', 'checked':'checked'})
     form1.new_control('radio', 'hgta_geneSeqType',{'value':'protein'})
     form1.new_control('radio', 'hgta_geneSeqType',{'value':'mRNA'})
@@ -50,9 +82,11 @@ def fetch_data_from_ucsc(clade ="mammal", genome="Human", seqType ="genomic"):
         content= response.read()
         with open("mechanize_results2.html", "w") as f:
             f.write(content)
-            
-        form2 = mechanize.HTMLForm('http://genome.ucsc.edu/cgi-bin/hgTables', method='Get')
-        form2.new_control('hidden', 'hgsid',{'value':'349632407'})    
+        
+        url = "http://genome.ucsc.edu/cgi-bin/hgTables?hgsid="+hgsid+"&hgta_geneSeqType=genomic&hgta_doGenePredSequence=submit"    
+        #form2 = mechanize.HTMLForm('http://genome.ucsc.edu/cgi-bin/hgTables', method='Get')
+        form2 = mechanize.HTMLForm(url, method='Get')
+        form2.new_control('hidden', 'hgsid',{'value':hgsid})    
         form2.new_control('checkbox', 'hgSeq.promoter',{'value':'on'})    
         form2.new_control('hidden', 'boolshad.hgSeq.promoter',{'value':'0'})
         form2.new_control('text', 'hgSeq.promoterSize',{'value':'1000'})
@@ -103,10 +137,10 @@ def add_select_to_form(form, name, attrs, options):
             new_attrs['selected'] = 'selected'
         form.new_control('select', name, attrs=new_attrs, index=idx)
     
-    
+  
 if __name__ == "__main__":
-   fetch_data_from_ucsc(genome="Chimp", seqType="protein")
-    
+   fetch_data_from_ucsc(clade="other", genome="S. cerevisiae", seqType="genomic")
+
     
     
     
