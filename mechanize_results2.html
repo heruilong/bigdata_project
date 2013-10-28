@@ -39,19 +39,19 @@ window.onunload = function(){}; // Trick to avoid FF back button issue.
 
 <li class="first even" id="home"><a href="/index.html" ><span id="home-link">Home</span></a></li> 
 
-<li id="genomes"><a href="/cgi-bin/hgGateway?hgsid=349632407">Genomes</a></li>
-<li id="genomeBrowser"><a href="/cgi-bin/hgTracks?hgsid=349632407">Genome Browser</a></li>
+<li id="genomes"><a href="/cgi-bin/hgGateway?hgsid=351326687">Genomes</a></li>
+<li id="genomeBrowser"><a href="/cgi-bin/hgTracks?hgsid=351326687">Genome Browser</a></li>
 
 <li class="menuparent" id="tools"><span>Tools</span>
 	<ul style="display: none; visibility: hidden;">
-	<li class="first"><a href="../cgi-bin/hgBlat?hgsid=349632407&command=start">Blat</a></li>
-	<li><a href="../cgi-bin/hgTables?hgsid=349632407">Table Browser</a></li>
-	<li><a href="../cgi-bin/hgVai?hgsid=349632407">Variant Annotation Integrator</a></li>
-	<li><a href="../cgi-bin/hgNear?hgsid=349632407">Gene Sorter</a></li>
-	<li><a href="../cgi-bin/hgGenome?hgsid=349632407">Genome Graphs</a></li>
-	<li><a href="../cgi-bin/hgPcr?hgsid=349632407">In-Silico PCR</a></li>
-	<li><a href="../cgi-bin/hgLiftOver?hgsid=349632407">LiftOver</a></li>
-	<li><a href="../cgi-bin/hgVisiGene?hgsid=349632407">VisiGene</a></li>
+	<li class="first"><a href="../cgi-bin/hgBlat?hgsid=351326687&command=start">Blat</a></li>
+	<li><a href="../cgi-bin/hgTables?hgsid=351326687">Table Browser</a></li>
+	<li><a href="../cgi-bin/hgVai?hgsid=351326687">Variant Annotation Integrator</a></li>
+	<li><a href="../cgi-bin/hgNear?hgsid=351326687">Gene Sorter</a></li>
+	<li><a href="../cgi-bin/hgGenome?hgsid=351326687">Genome Graphs</a></li>
+	<li><a href="../cgi-bin/hgPcr?hgsid=351326687">In-Silico PCR</a></li>
+	<li><a href="../cgi-bin/hgLiftOver?hgsid=351326687">LiftOver</a></li>
+	<li><a href="../cgi-bin/hgVisiGene?hgsid=351326687">VisiGene</a></li>
 	<li class="last"><a href="../util.html">Other Utilities</a></li>
 	</ul>
 </li>
@@ -81,9 +81,9 @@ US Server</li>
 </li>
 <li class="menuparent" id="myData"><span>My Data</span>
 	<ul style="display: none; visibility: hidden;">
-	<li><a href="../cgi-bin/hgSession?hgsid=349632407&hgS_doMainPage=1">Sessions</a></li>
-	<li><a href="../cgi-bin/hgHubConnect?hgsid=349632407">Track Hubs</a></li>
-	<li class="last"><a href="../cgi-bin/hgCustom?hgsid=349632407">Custom Tracks</a></li>
+	<li><a href="../cgi-bin/hgSession?hgsid=351326687&hgS_doMainPage=1">Sessions</a></li>
+	<li><a href="../cgi-bin/hgHubConnect?hgsid=351326687">Track Hubs</a></li>
+	<li class="last"><a href="../cgi-bin/hgCustom?hgsid=351326687">Custom Tracks</a></li>
 	</ul>
 </li>
 <li class="menuparent" id="aboutUs"><span>About Us</span>
@@ -141,7 +141,7 @@ Other RefSeq Genomic Sequence     </div></div>
 
 
 <FORM ACTION="/cgi-bin/hgTables" METHOD=GET>
-<INPUT TYPE=HIDDEN NAME='hgsid' VALUE='349632407'>
+<INPUT TYPE=HIDDEN NAME='hgsid' VALUE='351326687'>
 
 <H3> Sequence Retrieval Region Options: </H3>
 
@@ -151,11 +151,11 @@ Promoter/Upstream by
 bases <BR>
 <INPUT TYPE=CHECKBOX NAME="hgSeq.utrExon5" VALUE=on  CHECKED><INPUT TYPE=HIDDEN NAME='boolshad.hgSeq.utrExon5' VALUE='0' class='cbShadow'>
 5' UTR Exons <BR>
-<INPUT TYPE=CHECKBOX NAME="hgSeq.cdsExon" VALUE=on ><INPUT TYPE=HIDDEN NAME='boolshad.hgSeq.cdsExon' VALUE='0' class='cbShadow'>
+<INPUT TYPE=CHECKBOX NAME="hgSeq.cdsExon" VALUE=on  CHECKED><INPUT TYPE=HIDDEN NAME='boolshad.hgSeq.cdsExon' VALUE='0' class='cbShadow'>
 CDS Exons <BR>
-<INPUT TYPE=CHECKBOX NAME="hgSeq.utrExon3" VALUE=on ><INPUT TYPE=HIDDEN NAME='boolshad.hgSeq.utrExon3' VALUE='0' class='cbShadow'>
+<INPUT TYPE=CHECKBOX NAME="hgSeq.utrExon3" VALUE=on  CHECKED><INPUT TYPE=HIDDEN NAME='boolshad.hgSeq.utrExon3' VALUE='0' class='cbShadow'>
 3' UTR Exons <BR>
-<INPUT TYPE=CHECKBOX NAME="hgSeq.intron" VALUE=on ><INPUT TYPE=HIDDEN NAME='boolshad.hgSeq.intron' VALUE='0' class='cbShadow'>
+<INPUT TYPE=CHECKBOX NAME="hgSeq.intron" VALUE=on  CHECKED><INPUT TYPE=HIDDEN NAME='boolshad.hgSeq.intron' VALUE='0' class='cbShadow'>
 Introns <BR>
 <INPUT TYPE=CHECKBOX NAME="hgSeq.downstream" VALUE=on ><INPUT TYPE=HIDDEN NAME='boolshad.hgSeq.downstream' VALUE='0' class='cbShadow'>
 Downstream by 
