@@ -47,7 +47,7 @@ def fetch_data_from_ucsc(clade ="mammal", genome="Human", seqType ="genomic"):
     #set mRNA | protein | DNA
     br.select_form(nr=0)
     print br['hgta_geneSeqType']
-    br['hgta_geneSeqType'] = seqType
+    br['hgta_geneSeqType'] = [seqType]
     response = br.submit()
     
     #last form
