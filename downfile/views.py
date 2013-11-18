@@ -24,7 +24,7 @@ def download(request):
     value = webMC.mc.get(key)
     if value==None:
         fetdata.fetch_data_from_ucsc(clade = cladeVal, genome = genomeVal, seqType = seqTypeVal)
-	fastaStr = readfile.readLocal('../sequence/'+genomeVal+'-'+seqTypeVal+'.txt')
+	fastaStr = readfile.readLocal('../../sequence/'+genomeVal+'-'+seqTypeVal+'.txt')
 	fastaArr = geneFormat.decodeFasta(fastaStr)
 	value =  count.fastaCount(fastaArr)
     	print gc.computingGC(fastaArr)
