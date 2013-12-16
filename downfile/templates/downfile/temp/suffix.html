@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>D3 Demo: 5 divs with data</title>
+            <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+            <style type="text/css">
+                .bar {
+                    display: inline-block;
+                    width: 20px;
+                    height: 75px;
+                    margin-right: 2px;
+                    background-color: teal;
+                }
+                .pumpkin {
+                    fill: yellow;
+                    stroke: orange;
+                    stroke-width: 5;
+                }
+                .axis path,
+                .axis line {
+                    fill: none;
+                    stroke: black;
+                    shape-rendering: crispEdges;
+                }
+                .axis text {
+                    font-family: sans-serif;
+                    font-size: 11px;
+                }
+                </style>
+            </head>
+<body>
+    <script type="text/javascript">
+        //y = [["a",0],["c", 0], ["g", 1], ["t", 2], ["t",1], ["t",1], ["t", 0]];
+        var y = {{arr|safe}};
+        console.info(y);
+        var dataset = [];                                       //Initialize empty array
+        var numDataPoints = y.length;                           //Number of dummy data points to create
+        for (var i = 0; i < numDataPoints; i++) {                                       //Loop numDataPoints times
+            dataset.push([i, y[i][0],y[i][1]]);                                      //Add new number to array
+        }
+        var w = 1000;
+        var h = 618;
+        var barwidth = 15;
+        var barheight = 15;
+        var colorscheme = ["white","#E0FADE", "#9DFA98", "#32C22B","red"];
+        var row_num = 50;
+                          
+        var svg = d3.select("body")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h)
+        .attr("x", 50)
+        .attr("y",50);
+                          
+        
+        svg.selectAll("rect")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("x", function(d) {
+              //return d[0]*barwidth;
+              return getX(d[0], barwidth);
+        })
+        .attr("y", function(d) {
+              var y = getY(d[0]);
+              console.info(y);
+              return getY(d[0]);
+        })
+        .attr("width", function(d) {
+              return barwidth;
+        })
+        .attr("height",function(d) {
+              return barheight;
+        })
+        .attr("fill", function(d){
+              return colorscheme[d[2]];
+              });
+        
+        
+        svg.selectAll("text")
+        .data(dataset)
+        .enter()
+        .append("text")
+        .text(function(d){
+              return d[1];
+              })
+        .attr("text-anchor", "middle")
+        .attr("x", function(d) {
+              return getX(d[0],barwidth)+barwidth/2;
+              })
+        .attr("y", function(d) {
+              return getY(d[0])+2*barheight;
+              })
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "11px")
+        .attr("fill", "black");
+
+
+        
+        //every row display 150 characters
+        function getX(rank, barwidth){
+            var mod = rank % row_num;
+            return 50+mod*barwidth;
+        }
+        
+        //every row be at a distance of 50
+        function getY(rank){
+            var div = Math.floor(rank/row_num);;
+            return 50+div*50;
+        }        
+    </script>
+        <!--
+        <div>                                                              
+           <h2>Suffix Array Assembly!</h2>                                      
+            <h3>Overlap:</h3>                                                       
+            <table border="1">                                             
+                <tr><td>Light Green</td> <td>Green</td>  <td>Dark Green</td>   </tr>     
+                <tr><td>1</td>    <td>2</td>      <td>3</td>        </tr>  
+            </table>                                                       
+                                                                           
+        </div>
+        -->
+        <div>
+        <h2>fastq sequence </h2>
+        <div id="fastq_div">
+        <div>
+         <script>
+        var fqs = {{segments|safe}}; 
+        
+        var div_ele = document.getElementById('fastq_div'); 
+        for(i = 0; i < fqs.length; i++){
+           
+            div_ele.innerHTML = div_ele.innerHTML + '<br>' + fqs[i][0] + '<br>' + fqs[i][1] + '<br>' + fqs[i][2] + '<br>' + fqs[i][3];  
+        }           
+         </script> 
+        </div> 
+    </body>
+</html>

@@ -10,7 +10,6 @@ def dnaformat(dna):
 def rnaformat(rna):
 	return dnaformat(rna)
 
-#turn fasta string into an array
 def decodeFasta(fasta):
 	datas = fasta.split('\n')
 	res = []
@@ -37,7 +36,7 @@ def codon(code):
 	elif code=='ACU' or code=='ACC' or code=='ACA' or code=='ACG': return 'T'
 	elif code=='GCU' or code=='GCC' or code=='GCA' or code=='GCG': return 'A'
 	elif code=='UAU' or code=='UAC': return 'Y'
-	elif code=='UAA' or code=='UAG': return ''
+	elif code=='UAA' or code=='UAG': return '.'
 	elif code=='CAU' or code=='CAC': return 'H'
 	elif code=='CAA' or code=='CAG': return 'Q'
 	elif code=='AAU' or code=='AAC': return 'N'
@@ -45,7 +44,7 @@ def codon(code):
 	elif code=='GAU' or code=='GAC': return 'D'
 	elif code=='GAA' or code=='GAG': return 'E'
 	elif code=='UGU' or code=='UGC': return 'C'
-	elif code=='UGA': return ''
+	elif code=='UGA': return '.'
 	elif code=='UGG': return 'W'
 	elif code=='CGU' or code=='CGC' or code=='CGA' or code=='CGG': return 'R'
 	elif code=='AGU' or code=='AGC': return 'S'
@@ -53,14 +52,11 @@ def codon(code):
 	elif code=='GGU' or code=='GGC' or code=='GGA' or code=='GGG': return 'G'
 	else : return "'Wrong here'"	
 
-# rna-->protein
 def translate(rna):
-	assert len(rna)%3==0
 	prot=''
 	for i in range(0,len(rna)/3):
 		prot += codon(rna[i*3:i*3+3:])
 	return prot
 
-# dna-->rna
 def transcript(dna):
 	return dna.replace('T','U').replace('t','u')

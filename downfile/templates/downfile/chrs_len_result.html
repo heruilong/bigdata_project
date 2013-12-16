@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Char Length</title>
+    {% load staticfiles %}
+    <link href="{% static "dist/css/bootstrap2.css" %}" rel="stylesheet" />
+    <link href="{% static "dist/css/custom.css" %}" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+  </head>
+  <body>
+    <div id="acgt-container" class="container">
+      <div class="header">
+	<ul class="nav nav-pills pull-right">
+          <li class="active"><a href="/downfile">Back</a></li>
+        </ul>
+        <h3 class="text-muted">Result</h3>
+      </div>
+      <div id="d3" class="jumbotron">
+
+	<script type="text/javascript">
+	  //Width and height
+	  var w = document.getElementById('d3').offsetWidth;
+	  var h = 618;
+	  var padding = 100;
+			
+	  y = {{arr}}
+
+	  barwidth = (w-2*padding)/(y.length)/2
+
+	  //Dynamic, random dataset
+	  var dataset = [];	//Initialize empty array
+	  var numDataPoints = y.length;		//Number of dummy data points to create
+	  for (var i = 0; i < numDataPoints; i++) {  //Loop numDataPoints times
+	    dataset.push([i, y[i]]);	//Add new number to array
+	  }
+
+	  //Create scale functions
+	  var xScale = d3.scale.linear()
+	    .domain([0, d3.max(dataset, function(d) { return d[0]; })])
+	    .range([padding, w - padding * 2]);
+
+	  var yScale = d3.scale.linear()
+	    .domain([0, d3.max(dataset, function(d) { return d[1]; })])
+	    .range([h-padding, padding]);
+
+	  var rScale = d3.scale.linear()
+	    .domain([0, d3.max(dataset, function(d) { return d[1]; })])
+	    .range([2, 5]);
+
+          //Define X axis
+	  var xAxis = d3.svg.axis()
+	    .scale(xScale)
+	    .orient("bottom")
+	    .ticks(5);
+
+    	  //Define Y axis
+	  var yAxis = d3.svg.axis()
+	    .scale(yScale)
+	    .orient("left")
+	    .ticks(5);
+
+	  //Create SVG element
+          var svg = d3.select("#d3")
+	    .append("svg")
+	    .attr("width", w)
+	    .attr("height", h);
+  			
+	  svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x", function(d) {
+              return xScale(d[0]);
+            })
+            .attr("y", function(d) {
+              return yScale(d[1]);
+            })
+            .attr("width", function(d) {
+              return barwidth;
+            })
+            .attr("height",function(d) {
+	      return h-yScale(d[1])-padding;
+	    })
+            .attr("fill", "#EF8A7F");
+			
+	  //Create X axis
+	  svg.append("g")
+	    .attr("class", "axis")
+	    .attr("transform", "translate(0," + (h - padding) + ")")
+	    .call(xAxis);
+			
+	  //Create Y axis
+          svg.append("g")
+	    .attr("class", "axis")
+	    .attr("transform", "translate(" + padding + ",0)")
+	    .call(yAxis);
+
+	  </script>
+	</div>
+	<div class="footer">
+             <p>&copy Johns Hopkins University CS 2013</p>
+          </div>
+        <div>
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

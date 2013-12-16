@@ -14,6 +14,7 @@ import webbrowser
 import mechanize
 import re
 import os
+import gzip
 def fetch_data_from_ucsc(clade ="mammal", genome="Human", seqType ="genomic"):
     br = mechanize.Browser()
     br.set_handle_robots(False) #ignore robots
@@ -40,6 +41,9 @@ def fetch_data_from_ucsc(clade ="mammal", genome="Human", seqType ="genomic"):
     br["org"] = [genome]
     
     br["clade"] = [clade]
+    br["hgta_compressType"] = ["gzip"]
+    filename = genome+"-"+seqType
+    br["hgta_outFileName"] = filename
     #print br["org"]
     response = br.submit(name="hgta_doTopSubmit")
     content =  response.read()
@@ -68,17 +72,28 @@ def fetch_data_from_ucsc(clade ="mammal", genome="Human", seqType ="genomic"):
          
         with open(os.path.join("../sequence/")+genome+"-"+seqType+".txt", "a") as f:
             f.write(content)
+    
+    '''
     '''
     f = None
-    with open(os.path.join("../sequence/")+genome+"-"+seqType+".txt", "a") as f:
-        for chunk in iter((lambda: response.read(4096)), ''):
-            f.write(chunk)
-        #    print "running"
-        
+    with open(os.path.join("../../sequence/")+filename+".gz", "w") as f:
+        #for chunk in iter((lambda: response.read(4096000)), ''):
+            f.write(response.read())
+            #print chunk
+    '''
+    f   = open(os.path.join("../../sequence/")+filename+".gz", "wb")
+    f.write(response.read())  
    
     f.close()
     print "done"
-
+    f = gzip.open(os.path.join("../../sequence/")+filename+".gz", 'rb')
+    file_content = f.read()
+    f.close()
+    f = open(os.path.join("../../sequence/")+filename+".txt", "w")
+    f.write(file_content)
+    f.close()
+    #print file_content
+    print "finish"
 if __name__ == "__main__":
-    fetch_data_from_ucsc(clade="other", genome="S. cerevisiae", seqType="genomic")
+    fetch_data_from_ucsc(clade="vertebrate", genome="Chicken", seqType="genomic")
     #fetch_data_from_ucsc()

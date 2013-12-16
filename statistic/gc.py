@@ -1,19 +1,24 @@
 import sys
 
-def computingGC(fastaArr):
-	assert len(fastaArr)>0 and len(fastaArr)%2==0
-        GCs = {}
-        for i in xrange(0,len(fastaArr)/2):
-		k,v = fastaArr[2*i],fastaArr[2*i+1]
-		if len(v)==0: GCs[k] =0.0
-                else: GCs[k] = 100.0*(v.count('C')+v.count('G'))/len(v)
-	value = 0
-        key = ''
-        for (k,v) in GCs.items():
-                if v>=value:
-                        value=v
-                        key=k
-        
-	if len(str(value))>9 : return key,str("%.6f"%value)
-        else : return key,value
+def computeGC(read):
+    gc=read.count('c')+read.count('g')+read.count('C')+read.count('G')
+    gc/=1.0*len(read)
+    return gc
 
+def getGCs(absPath):
+    gcs=[]
+    read=[]
+    with open(absPath,'r') as f:
+        for line in f:
+            line = line.strip()
+            if '>' in line:
+                if len(read)>0: gcs.append(computeGC(''.join(read)))
+                read=[]
+            else:
+                read.append(line)
+    if len(read)>0: gcs.append(computeGC(''.join(read)))
+            
+    return sorted(gcs,reverse=True)
+
+if __name__=="__main__":
+    print getGCs(sys.argv[1])

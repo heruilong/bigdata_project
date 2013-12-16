@@ -1,0 +1,237 @@
+<doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=decive-width, initial-scale=1.0" />
+	<title>genome_web</title>
+   {% load staticfiles %}
+    <link href="{% static "dist/css/bootstrap2.css" %}" rel="stylesheet" />
+    <link href="{% static "dist/css/custom.css" %}" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="{% static "select_script.js" %}"></script>
+</head>
+
+<body>
+  <div class="main">
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#section1">Project Description</a></li>
+            <li><a href="#section2">Genome Count</a></li>
+            <li><a href="#section3">Character Length</a></li>
+            <li><a href="#section4">Genome Assembly</a></li>
+            <li><a href="#section5">Text Case</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Yao Huang</a></li>
+            <li><a href="#">Ruilong He</a></li>
+            <li><a href="#">Xiang Niu</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+	  
+      <!--section1: Description -->
+      <div id="section1" class="section1">
+      	<h2>Project Description</h2>
+      </div><!--/ end section1-->
+      
+      <!--section2: Description -->
+      <div id="section2" class="section2">
+      	<h2>Genome Count</h2>
+      </div><!--/ end section2 -->
+      
+      <!--section3: Description -->
+      <div id="section3" class="section3">
+      	<h2>Character Length</h2>
+      </div><!--/ end section3 -->
+      
+      <!--section4: Description -->
+      <div id="section4" class="section4">
+      	<h2>Genome Assembly</h2>
+      </div><!--/ end section4 -->
+      
+      <!--section5: Description -->
+      <div id="section5" class="section5">
+      	<h2>Test Case</h2>
+        <!-- Main component for a primary marketing message or call to action -->
+        <div id="test-form" class="jumbotron col-lg-6">
+      	  <form id="test-form" class="form-horizontal" role="form" onSubmit="mysubmit()"  action="downloadfile" method="post">{% csrf_token %}
+            <div class="form-group">
+              <h4 class="col-sm-4 control-label">FastA Format</h4>
+            </div>
+	    <div class="form-group">
+              <h4 class="col-sm-4 control-label">Clade:</h4>
+              <div class="col-lg-7 has-success">
+                <select id='clade' class="form-control" name="clade"> 
+                  <OPTION VALUE="mammal">Mammal</OPTION>
+                  <OPTION VALUE="vertebrate">Vertebrate</OPTION>
+                  <OPTION VALUE="deuterostome">Deuterostome</OPTION>
+                  <OPTION VALUE="insect">Insect</OPTION>
+                  <OPTION VALUE="worm">Worm</OPTION>
+                  <OPTION SELECTED VALUE="other">Other</OPTION>
+                </select>
+              </div>
+	    </div>
+            <div class="form-group">
+              <h4 class="col-sm-4 control-label">Genome:</h4>
+              <div class="col-lg-7 has-success">
+                <select id='genome' class="form-control" name='genome'>
+                  <!--
+                  <OPTION SELECTED VALUE="Human">Human</OPTION>
+                  <OPTION VALUE="Chimp">Chimp</OPTION>
+                  <OPTION VALUE="Gorilla">Gorilla</OPTION>
+                  <OPTION VALUE="Orangutan">Orangutan</OPTION>
+                  <OPTION VALUE="Gibbon">Gibbon</OPTION>
+                  <OPTION VALUE="Rhesus">Rhesus</OPTION>
+                  <OPTION VALUE="Baboon">Baboon</OPTION>
+                  <OPTION VALUE="Squirrel monkey">Squirrel monkey</OPTION>
+                  <OPTION VALUE="Marmoset">Marmoset</OPTION>
+                  <OPTION VALUE="Tarsier">Tarsier</OPTION>
+                  <OPTION VALUE="Mouse lemur">Mouse lemur</OPTION>
+                  <OPTION VALUE="Bushbaby">Bushbaby</OPTION>
+                  <OPTION VALUE="Tree shrew">Tree shrew</OPTION>
+                  <OPTION VALUE="Mouse">Mouse</OPTION>
+                  <OPTION VALUE="Rat">Rat</OPTION>
+                  <OPTION VALUE="Kangaroo rat">Kangaroo rat</OPTION>
+                  <OPTION VALUE="Naked mole-rat">Naked mole-rat</OPTION>
+                  <OPTION VALUE="Guinea pig">Guinea pig</OPTION>
+                  <OPTION VALUE="Rabbit">Rabbit</OPTION>
+                  <OPTION VALUE="Squirrel">Squirrel</OPTION>
+                  <OPTION VALUE="Alpaca">Alpaca</OPTION>
+                  <OPTION VALUE="Dolphin">Dolphin</OPTION>
+                  <OPTION VALUE="Sheep">Sheep</OPTION>
+                  <OPTION VALUE="Cow">Cow</OPTION>
+                  <OPTION VALUE="Horse">Horse</OPTION>
+                  <OPTION VALUE="White rhinoceros">White rhinoceros</OPTION>
+                  <OPTION VALUE="Cat">Cat</OPTION>
+                  <OPTION VALUE="Ferret ">Ferret </OPTION>
+                  <OPTION VALUE="Dog">Dog</OPTION>
+                  <OPTION VALUE="Panda">Panda</OPTION>
+                  <OPTION VALUE="Microbat">Microbat</OPTION>
+                  <OPTION VALUE="Megabat">Megabat</OPTION>
+                        <OPTION VALUE="Hedgehog">Hedgehog</OPTION>
+                        <OPTION VALUE="Shrew">Shrew</OPTION>
+                        <OPTION VALUE="Elephant">Elephant</OPTION>
+                        <OPTION VALUE="Rock hyrax">Rock hyrax</OPTION>
+                        <OPTION VALUE="Tenrec">Tenrec</OPTION>
+                        <OPTION VALUE="Manatee">Manatee</OPTION>
+                        <OPTION VALUE="Armadillo">Armadillo</OPTION>
+                        <OPTION VALUE="Sloth">Sloth</OPTION>
+                        <OPTION VALUE="Opossum">Opossum</OPTION>
+                        <OPTION VALUE="Tasmanian devil">Tasmanian devil</OPTION>
+                        <OPTION VALUE="Wallaby">Wallaby</OPTION>
+                  <OPTION VALUE="Platypus">Platypus</OPTION>
+                  -->
+                  <OPTION SELECTED VALUE='Sea hare'>Sea hare</OPTION>
+                  <OPTION VALUE='S. cerevisiae'>S. cerevisiae</OPTION>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <h4 class="col-sm-4 control-label">Sequence Type</h4>
+              <div class="col-lg-7 has-success">
+                <select id="seqType" class="form-control" name = "seqType">
+                  <OPTION SELECTED VALUE="genomic">DNA</OPTION>
+                  <OPTION VALUE="mRNA">mRNA</OPTION>
+                  <OPTION VALUE="protein">protein</OPTION>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-4 control-label">
+              </div>
+              <div class="button-group col-lg-7">
+              	<div>
+                  <div>
+                    <button id="button1" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="download">Download</button>
+                  </div>
+	        <div class="div2">    
+                  <button id="button2" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="ATCG_count">ATCG_count</button>
+                  <!--<a id="button2" class="btn">ATCG_COUNT</a>--> 
+                  <button id="button3" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="chrs_length">Segments Length</button>
+                </div>
+		<div class="div2">   
+		   <button id="button4" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="gc_content">GC Content</button>
+                   <button id="button5" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="protein_percent">Protein Unit</button>
+                </div>
+	      </div>
+            </div>
+          </div>
+          <!-- add by hrl-->
+	  <div class="form-group">
+	    <h4 class="col-sm-4 control-label">FastQ Format</h4>
+	  </div>
+          <div class="form-group">
+            <h4 class="col-sm-4 control-label">File Name</h4>
+            <div class="col-lg-7 has-success">
+              <select id="seqType" class="form-control" name = "fastqFile">
+                 <OPTION SELECTED VALUE="SRR062635">SRR062635</OPTION>
+                 <OPTION VALUE="SRR702073">SRR702073</OPTION>
+                 <!--OPTION VALUE="SRR037780">SRR037780</OPTION--!>      
+                 <OPTION VALUE="SRR070802">SRR070802</OPTION>
+                 <OPTION VALUE="SRR081224">SRR081224</OPTION>
+                 <OPTION VALUE="SRR702074">SRR702074</OPTION>
+                 <OPTION VALUE="SRR741412">SRR741412</OPTION>  
+                 <OPTION VALUE="SRR077444">SRR077444</OPTION>
+                 <OPTION VALUE="SRR711354">SRR711354</OPTION>    
+              </select>                                          
+            </div>                                                 
+          </div>    
+          <div class="form-group">
+            <h4 class="col-sm-4 control-label">Length</h4>
+            <div class="col-lg-7 has-success">
+              <select id="seqType" class="form-control" name = "fastqLength">
+                <OPTION VALUE="10">10</OPTION>
+		<OPTION SELECTED VALUE="100">100</OPTION>
+                <OPTION VALUE="1000">1000</OPTION>
+                <!--OPTION VALUE="10000">10000</OPTION-->
+              </select>
+            </div>                                                                                                                  
+          </div> 
+          <div class="form-group">
+	    <div class="col-sm-4 control-label">
+	    </div>
+	    <div class="button-group col-lg-7">
+	      <div>
+		<div class="div2">
+                  <button id="button6" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="assembly">Assembly</button>
+                  <button id="button7" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="hamiltonDistance">Ham Distance</button>
+		</div>
+		<div class="div2">                  
+ 		  <button id="button8" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="editDistance">Edit Distance</button>
+		</div>
+              </div>
+	    </div>
+                                             
+            <!-- done add by hrl-->  
+          </div> 
+      
+        </div><!--/ end section5 -->
+      </div>
+      <div class="footer">
+        <p>&copy Johns Hopkins University CS 2013</p>
+      </div>
+    </div> <!-- /container -->
+  </div> <!-- /main -->  
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static "dist/js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript">select_change();</script>
+</body>
+</html>

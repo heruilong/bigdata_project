@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=decive-width, initial-scale=1.0" />
+	<title>genome_web</title>
+    <link href="dist/css/bootstrap2.css"rel="stylesheet" />
+    <link href="dist/css/custom.css"rel="stylesheet">
+    <script type="text/javascript" src="dist/js/bootstrap-select.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+
+      <!-- Static navbar -->
+      <div class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#section1">Project Description</a></li>
+            <li><a href="#section2">Genome Count</a></li>
+            <li><a href="#section3">Character Length</a></li>
+            <li><a href="#section4">Genome Assembly</a></li>
+            <li><a href="#section5">Text Case</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Yao Huang</a></li>
+            <li><a href="#">Ruilong He</a></li>
+            <li><a href="#">Xiang Niu</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+	  
+      <!--section1: Description -->
+      <div id="section1" class="section1">
+      	<h2>Project Description</h2>
+      </div><!--/ end section1-->
+      
+      <!--section2: Description -->
+      <div id="section2" class="section2">
+      	<h2>Genome Count</h2>
+      </div><!--/ end section2 -->
+      
+      <!--section3: Description -->
+      <div id="section3" class="section3">
+      	<h2>Character Length</h2>
+      </div><!--/ end section3 -->
+      
+      <!--section4: Description -->
+      <div id="section4" class="section4">
+      	<h2>Genome Assembly</h2>
+      </div><!--/ end section4 -->
+      
+      <!--section5: Description -->
+      <div id="section5" class="section5">
+      	<h2>Test Case</h2>
+        <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron col-lg-6">
+      	<form class="form-horizontal" role="form" action="downloadfile" method="post">{% csrf_token %}
+        	<div class="form-group">
+            	<h4 class="col-sm-4 control-label">Clade:</h4>
+                <div class="col-lg-7 has-success">
+                <select id='clade' class="form-control" name="clade"> 
+                    <OPTION SELECTED VALUE="mammal">Mammal</OPTION>
+                    <OPTION VALUE="vertebrate">Vertebrate</OPTION>
+                    <OPTION VALUE="deuterostome">Deuterostome</OPTION>
+                    <OPTION VALUE="insect">Insect</OPTION>
+                    <OPTION VALUE="worm">Worm</OPTION>
+                    <OPTION VALUE="other">Other</OPTION>
+                </select>
+                </div>
+			</div>
+            <div class="form-group">
+            	<h4 class="col-sm-4 control-label">Genome:</h4>
+            	<div class="col-lg-7 has-success">
+                	<select id='genome' class="form-control" name='genome'>
+                        <OPTION SELECTED VALUE="Human">Human</OPTION>
+                        <OPTION VALUE="Chimp">Chimp</OPTION>
+                        <OPTION VALUE="Gorilla">Gorilla</OPTION>
+                        <OPTION VALUE="Orangutan">Orangutan</OPTION>
+                        <OPTION VALUE="Gibbon">Gibbon</OPTION>
+                        <OPTION VALUE="Rhesus">Rhesus</OPTION>
+                        <OPTION VALUE="Baboon">Baboon</OPTION>
+                        <OPTION VALUE="Squirrel monkey">Squirrel monkey</OPTION>
+                        <OPTION VALUE="Marmoset">Marmoset</OPTION>
+                        <OPTION VALUE="Tarsier">Tarsier</OPTION>
+                        <OPTION VALUE="Mouse lemur">Mouse lemur</OPTION>
+                        <OPTION VALUE="Bushbaby">Bushbaby</OPTION>
+                        <OPTION VALUE="Tree shrew">Tree shrew</OPTION>
+                        <OPTION VALUE="Mouse">Mouse</OPTION>
+                        <OPTION VALUE="Rat">Rat</OPTION>
+                        <OPTION VALUE="Kangaroo rat">Kangaroo rat</OPTION>
+                        <OPTION VALUE="Naked mole-rat">Naked mole-rat</OPTION>
+                        <OPTION VALUE="Guinea pig">Guinea pig</OPTION>
+                        <OPTION VALUE="Rabbit">Rabbit</OPTION>
+                        <OPTION VALUE="Squirrel">Squirrel</OPTION>
+                        <OPTION VALUE="Pika">Pika</OPTION>
+                        <OPTION VALUE="Pig">Pig</OPTION>
+                        <OPTION VALUE="Alpaca">Alpaca</OPTION>
+                        <OPTION VALUE="Dolphin">Dolphin</OPTION>
+                        <OPTION VALUE="Sheep">Sheep</OPTION>
+                        <OPTION VALUE="Cow">Cow</OPTION>
+                        <OPTION VALUE="Horse">Horse</OPTION>
+                        <OPTION VALUE="White rhinoceros">White rhinoceros</OPTION>
+                        <OPTION VALUE="Cat">Cat</OPTION>
+                        <OPTION VALUE="Ferret ">Ferret </OPTION>
+                        <OPTION VALUE="Dog">Dog</OPTION>
+                        <OPTION VALUE="Panda">Panda</OPTION>
+                        <OPTION VALUE="Microbat">Microbat</OPTION>
+                        <OPTION VALUE="Megabat">Megabat</OPTION>
+                        <OPTION VALUE="Hedgehog">Hedgehog</OPTION>
+                        <OPTION VALUE="Shrew">Shrew</OPTION>
+                        <OPTION VALUE="Elephant">Elephant</OPTION>
+                        <OPTION VALUE="Rock hyrax">Rock hyrax</OPTION>
+                        <OPTION VALUE="Tenrec">Tenrec</OPTION>
+                        <OPTION VALUE="Manatee">Manatee</OPTION>
+                        <OPTION VALUE="Armadillo">Armadillo</OPTION>
+                        <OPTION VALUE="Sloth">Sloth</OPTION>
+                        <OPTION VALUE="Opossum">Opossum</OPTION>
+                        <OPTION VALUE="Tasmanian devil">Tasmanian devil</OPTION>
+                        <OPTION VALUE="Wallaby">Wallaby</OPTION>
+                        <OPTION VALUE="Platypus">Platypus</OPTION>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+        		<h4 class="col-sm-4 control-label">Sequence Type</h4>
+                <div class="col-lg-7 has-success">
+                	<select id="seqType" class="form-control" name = "seqType">
+                        <OPTION SELECTED VALUE="genomic">DNA</OPTION>
+                        <OPTION VALUE="mRNA">mRNA</OPTION>
+                        <OPTION VALUE="protein">protein</OPTION>
+                    </select>
+                </div>
+        	</div>
+            <div class="form-group">
+              <div class="col-sm-4 control-label">
+              </div>
+              <div class="button-group col-lg-7">
+              	<div>
+                <div>
+                    <button id="button1" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="download">Download</button>
+                     
+                    <!--<button id="button2" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="ATCG_count">ATCG_count</button>-->
+                    <a id="button2" class="btn">ATCG_COUNT</a>
+                </div> 
+                <div class="div2"> 
+                    <button id="button3" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="chrs_length">chrs_length</button>
+                    <button id="button4" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="assembly">Assembly</button>
+                </div>
+                </div>
+              </div>
+            </div>
+       
+      
+  <!--  
+      
+      <div>
+        <button id="button1" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="download">Download</button>
+         
+        <button id="button2" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="ATCG_count">ATCG_count</button>
+      </div> 
+      <div class="div2"> 
+    <button id="button3" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="chrs_length">chrs_length</button>
+        <button id="button4" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="assembly">Assembly</button>
+       
+      </div>
+    
+
+</form>
+      
+     <!-- 
+      <form class="form-choice" action="downloadfile" method="post">{% csrf_token %}
+        
+		<table class="table table-bordered" width="200" border="1">
+
+      <tr class="active">
+        <td><h4>Clade:</h4></td>
+        <td><select id='clade' class="selectpicker" name="clade"> 
+                <OPTION SELECTED VALUE="mammal">Mammal</OPTION>
+                <OPTION VALUE="vertebrate">Vertebrate</OPTION>
+                <OPTION VALUE="deuterostome">Deuterostome</OPTION>
+                <OPTION VALUE="insect">Insect</OPTION>
+                <OPTION VALUE="worm">Worm</OPTION>
+                <OPTION VALUE="other">Other</OPTION>
+            </select>
+       </td>
+      </tr>
+    
+      <tr>
+        <td><h4>Genome:</h4></td>
+        <td>
+            <select id='genome' name='genome'>
+                <OPTION SELECTED VALUE="Human">Human</OPTION>
+                <OPTION VALUE="Chimp">Chimp</OPTION>
+                <OPTION VALUE="Gorilla">Gorilla</OPTION>
+                <OPTION VALUE="Orangutan">Orangutan</OPTION>
+                <OPTION VALUE="Gibbon">Gibbon</OPTION>
+                <OPTION VALUE="Rhesus">Rhesus</OPTION>
+                <OPTION VALUE="Baboon">Baboon</OPTION>
+                <OPTION VALUE="Squirrel monkey">Squirrel monkey</OPTION>
+                <OPTION VALUE="Marmoset">Marmoset</OPTION>
+                <OPTION VALUE="Tarsier">Tarsier</OPTION>
+                <OPTION VALUE="Mouse lemur">Mouse lemur</OPTION>
+                <OPTION VALUE="Bushbaby">Bushbaby</OPTION>
+                <OPTION VALUE="Tree shrew">Tree shrew</OPTION>
+                <OPTION VALUE="Mouse">Mouse</OPTION>
+                <OPTION VALUE="Rat">Rat</OPTION>
+                <OPTION VALUE="Kangaroo rat">Kangaroo rat</OPTION>
+                <OPTION VALUE="Naked mole-rat">Naked mole-rat</OPTION>
+                <OPTION VALUE="Guinea pig">Guinea pig</OPTION>
+                <OPTION VALUE="Rabbit">Rabbit</OPTION>
+                <OPTION VALUE="Squirrel">Squirrel</OPTION>
+                <OPTION VALUE="Pika">Pika</OPTION>
+                <OPTION VALUE="Pig">Pig</OPTION>
+                <OPTION VALUE="Alpaca">Alpaca</OPTION>
+                <OPTION VALUE="Dolphin">Dolphin</OPTION>
+                <OPTION VALUE="Sheep">Sheep</OPTION>
+                <OPTION VALUE="Cow">Cow</OPTION>
+                <OPTION VALUE="Horse">Horse</OPTION>
+                <OPTION VALUE="White rhinoceros">White rhinoceros</OPTION>
+                <OPTION VALUE="Cat">Cat</OPTION>
+                <OPTION VALUE="Ferret ">Ferret </OPTION>
+                <OPTION VALUE="Dog">Dog</OPTION>
+                <OPTION VALUE="Panda">Panda</OPTION>
+                <OPTION VALUE="Microbat">Microbat</OPTION>
+                <OPTION VALUE="Megabat">Megabat</OPTION>
+                <OPTION VALUE="Hedgehog">Hedgehog</OPTION>
+                <OPTION VALUE="Shrew">Shrew</OPTION>
+                <OPTION VALUE="Elephant">Elephant</OPTION>
+                <OPTION VALUE="Rock hyrax">Rock hyrax</OPTION>
+                <OPTION VALUE="Tenrec">Tenrec</OPTION>
+                <OPTION VALUE="Manatee">Manatee</OPTION>
+                <OPTION VALUE="Armadillo">Armadillo</OPTION>
+                <OPTION VALUE="Sloth">Sloth</OPTION>
+                <OPTION VALUE="Opossum">Opossum</OPTION>
+                <OPTION VALUE="Tasmanian devil">Tasmanian devil</OPTION>
+                <OPTION VALUE="Wallaby">Wallaby</OPTION>
+                <OPTION VALUE="Platypus">Platypus</OPTION>
+            </select>
+        </td>
+      </tr>
+    
+      <tr class="active">
+        <td><h4>Sequence Type</h4></td>
+        <td>
+            <select id="seqType" name = "seqType">
+                <OPTION SELECTED VALUE="genomic">DNA</OPTION>
+                <OPTION VALUE="mRNA">mRNA</OPTION>
+                <OPTION VALUE="protein">protein</OPTION>
+            </select>
+        </td>
+      </tr>
+      </table>
+      <div>
+        <button id="button1" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="download">Download</button>
+         
+        <button id="button2" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="ATCG_count">ATCG_count</button>
+      </div> 
+      <div class="div2"> 
+    <button id="button3" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="chrs_length">chrs_length</button>
+        <button id="button4" class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="assembly">Assembly</button>
+       
+      </div>
+    
+
+</form>
+-->
+      </div>
+      <div id="d3" class="d3-animation col-lg-6">
+      
+      </div>
+      </div><!--/ end section5 -->
+      
+      
+
+    </div> <!-- /container -->
+    
+    <script>
+		//$(button2).click(function() {
+			//event.preventDefault();
+			//Width and height
+			var w = document.getElementById('d3').offsetWidth - 50;
+			var h = document.getElementById('d3').offsetHeight;
+			var padding = 100;
+			
+			y = {{arr}}
+			//y =[1,2,3,4,5,6];
+
+			barwidth = (w-2*padding)/(y.length)/2;
+
+			//Dynamic, random dataset
+			var dataset = [];					//Initialize empty array
+			var numDataPoints = y.length;				//Number of dummy data points to create
+			for (var i = 0; i < numDataPoints; i++) {					//Loop numDataPoints times
+				dataset.push([i, y[i]]);					//Add new number to array
+			}
+			
+			var margin = {top: 40, right: 20, bottom: 30, left: 40};
+			var width = w - margin.left - margin.right;
+			var height = h - margin.top - margin.bottom;
+
+			//Create scale functions
+			var xScale = d3.scale.linear()
+				 .domain([0, d3.max(dataset, function(d) { return d[0]; })])
+				 .range([margin.right, width], .1);
+			//var xScale = d3.scale.ordinal().rangeRoundBands([0, width], .1);
+			var yScale = d3.scale.linear()
+				 .domain([0, d3.max(dataset, function(d) { return d[1]; })])
+				 .range([height, 0]);
+			//var yScale = d3.scale.ordinal().rangeRoundBands([height, 0]);
+			
+
+			//Define X axis
+			var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+
+			//Define Y axis
+			var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(5);
+
+			//Create SVG element
+			var svg = d3.select("#d3")
+				.append("svg")
+				.attr("width", w)
+				.attr("height", h)
+				.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+						
+			svg.selectAll("rect")
+			   .data(dataset)
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d) {
+					return xScale(d[0]) - margin.right*3 / 4;
+			   })
+			   .attr("y", function(d) {
+					return yScale(d[1]);
+			   })
+			   .attr("width", function(d) {
+					return barwidth;
+			   })
+			   .attr("height",function(d) {
+					return height - yScale(d[1]);
+			   })
+			   
+			//Create labels
+			svg.selectAll("text")
+			   .data(dataset)
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+			   		return d[1];
+			   })
+			   .attr("x", function(d) {
+			   		return xScale(d[0]);
+			   })
+			   .attr("y", function(d) {
+			   		return yScale(d[1])-5;
+			   })
+			   .attr("font-family", "sans-serif")
+			   .attr("font-size", "11px");
+		  	
+			
+			//Create X axis
+			svg.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis);
+			
+			//Create Y axis
+			svg.append("g")
+				.attr("class", "y axis")
+				.call(yAxis)
+				.append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("yScale", 6)
+				.attr("dy", "1.71em")
+				.style("text-anchor", "end")
+				.text("Frequency");
+			
+		//});
+		
+	
+	</script>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -198,7 +198,7 @@ def get_file_path():
     return path
 
 if __name__ == "__main__":
-    fetch_data_from_ucsc_ftp(clade="vertebrate", genome="Chicken", seqType="genomic")
+     fetch_data_from_ucsc_ftp(clade="vertebrate", genome="Chicken", seqType="genomic")
     #fetch_data_from_ucsc()
     #S. cerevisiae other Sea hare
     #unzip_gz_file(genome="Chicken", seqType="genomic")
